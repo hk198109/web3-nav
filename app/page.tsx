@@ -17,8 +17,8 @@ export default function Home() {
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-3 text-gray-300 font-mono">
-            <span>⛽ ETH: <strong class="text-white">12 Gwei</strong></span>
-            <span>🔮 SOL: <strong class="text-white">0.000005</strong></span>
+            <span>⛽ ETH: <strong className="text-white">12 Gwei</strong></span>
+            <span>🔮 SOL: <strong className="text-white">0.000005</strong></span>
           </div>
           <a href="https://t.me/Hsah0909" target="_blank" rel="noreferrer" className="bg-sky-500 hover:bg-sky-600 text-white px-3 py-1 rounded-full font-medium transition flex items-center gap-1 text-xs">
             <i className="fa-brands fa-telegram"></i> 加入交流群
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="flex items-center space-x-2 overflow-hidden">
             <span className="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold shrink-0">哈希情报</span>
             <p className="truncate text-gray-300">
-              📢 欢迎来到 Web3 极客工作台！入群获取实时扫盘 Bots & 独家 Pine Script 操盘脚本！
+              📢 欢迎来到 Web3 极客工作台！入群获取实时扫盘 Bots &amp; 独家 Pine Script 操盘脚本！
             </p>
           </div>
           <a href="https://t.me/Hsah0909" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline shrink-0 ml-2">了解更多 &rarr;</a>
@@ -43,7 +43,7 @@ export default function Home() {
       <main className="max-w-7xl w-full mx-auto px-4 py-8 flex-grow">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2">
-            Web3 极客工作台 & 全能导航
+            Web3 极客工作台 &amp; 全能导航
           </h1>
           <p className="text-gray-400 text-sm mb-6">
             一站式直达全网 Meme 扫盘、DeFi、链上数据分析与开发者工具
@@ -80,7 +80,7 @@ export default function Home() {
             </div>
             <div className="flex-grow min-w-0">
               <h3 className="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">OKX | 欧易</h3>
-              <p className="text-xs text-gray-400 mt-1 line-clamp-2">领先的交易平台与 Web3 钱包<br/><span className="text-gray-500 text-[11px]">Leading Crypto Exchange & Web3 Wallet</span></p>
+              <p className="text-xs text-gray-400 mt-1 line-clamp-2">领先的交易平台与 Web3 钱包<br/><span className="text-gray-500 text-[11px]">Leading Crypto Exchange &amp; Web3 Wallet</span></p>
             </div>
           </a>
 
@@ -146,7 +146,7 @@ export default function Home() {
             </div>
             <div className="flex-grow min-w-0">
               <h3 className="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">TradingView</h3>
-              <p class="text-xs text-gray-400 mt-1 line-clamp-2">专业行情分析与 Pine 脚本开发</p>
+              <p className="text-xs text-gray-400 mt-1 line-clamp-2">专业行情分析与 Pine 脚本开发</p>
             </div>
           </a>
 
@@ -226,7 +226,7 @@ export default function Home() {
           Telegram: <a href="https://t.me/U09099" target="_blank" rel="noreferrer" className="text-emerald-400 font-medium hover:underline">@U09099</a> | 
           官方交流群: <a href="https://t.me/Hsah0909" target="_blank" rel="noreferrer" className="text-emerald-400 font-medium hover:underline">@Hsah0909</a>
         </p>
-        <p>&copy; 2026 Web3 Nav Pro. Designed for Traders & Developers.</p>
+        <p>&copy; 2026 Web3 Nav Pro. Designed for Traders &amp; Developers.</p>
       </footer>
     </div>
   );
