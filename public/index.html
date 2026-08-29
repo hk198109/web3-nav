@@ -3,80 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hash Club｜哈希俱乐部 & 全能导航</title>
+    <title>Hash Club｜哈希俱乐部 & Web3 全能终极导航</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body
- {
-            background-color: #0b0e14
-;
-            color: #eaedf0
-;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI"
-, Roboto, Helvetica, Arial, sans-serif;
+        body {
+            background-color: #0b0e14;
+            color: #eaedf0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        .card-bg
- {
-            background-color: #131822
-;
-            border: 1px solid #1e2638
-;
+        .card-bg {
+            background-color: #131822;
+            border: 1px solid #1e2638;
         }
-        .card-bg:hover
- {
-            border-color: #2b364f
-;
-            background-color: #171e2c
-;
+        .card-bg:hover {
+            border-color: #2b364f;
+            background-color: #171e2c;
         }
-        .nav-header
- {
-            background-color: #0d111a
-;
-            border-bottom: 1px solid #1a2130
-;
+        .nav-header {
+            background-color: #0d111a;
+            border-bottom: 1px solid #1a2130;
         }
-        .banner-bg
- {
-            background: linear-gradient(90deg, rgba(16, 37, 42, 0.8) 0%, rgba(13, 25, 38, 0.8) 100%
-);
-            border: 1px solid #143530
-;
+        .banner-bg {
+            background: linear-gradient(90deg, rgba(16, 37, 42, 0.8) 0%, rgba(13, 25, 38, 0.8) 100%);
+            border: 1px solid #143530;
         }
-        /* Tab 按钮样式 */
-        .tab-btn
- {
-            background-color: #131822
-;
-            color: #9ca3af
-;
-            border: 1px solid #1e2638
-;
-            transition: all 0.2s
- ease-in-out;
-            cursor
-: pointer;
+        .tab-btn {
+            background-color: #131822;
+            color: #9ca3af;
+            border: 1px solid #1e2638;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
         }
-        .tab-btn:hover
- {
-            background-color: #1a2130
-;
-            color: #ffffff
-;
+        .tab-btn:hover {
+            background-color: #1a2130;
+            color: #ffffff;
         }
-        .tab-btn.active
- {
-            background-color: #10b981
-;
-            color: #000000
-;
-            font-weight: 700
-;
-            border-color: #10b981
-;
+        .tab-btn.active {
+            background-color: #10b981;
+            color: #000000;
+            font-weight: 700;
+            border-color: #10b981;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -86,21 +62,27 @@
     <header class="nav-header px-4 py-2 text-xs flex flex-wrap justify-between items-center text-gray-400 gap-2">
         <div class="flex items-center space-x-2">
             <span class="text-emerald-400 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-bolt"></i>
- Hash Club｜哈希俱乐部 Nav Pro
+                <i class="fa-solid fa-bolt"></i> Hash Club｜哈希俱乐部 Nav Ultra Pro
             </span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-0.5 rounded text-[11px] border border-gray-700">
-                <i class="fa-regular fa-clock mr-1"></i>2026年08月28日 星期五 20:28:47 (本地) <span class="text-emerald-500 font-mono">UTC</span>
+            <!-- 动态实时时钟挂载点 -->
+            <span id="live-clock" class="bg-gray-800 text-gray-300 px-2 py-0.5 rounded text-[11px] border border-gray-700">
+                <i class="fa-regular fa-clock mr-1"></i>加载实时时间中...
             </span>
         </div>
         <div class="flex items-center space-x-4">
-            <div class="flex items-center space-x-3 text-gray-300 font-mono">
-                <span>⛽ ETH: <strong class="text-white">12 Gwei</strong></span>
-                <span>🔮 SOL: <strong class="text-white">0.000005</strong></span>
+            <div class="flex items-center space-x-3 text-gray-300 font-mono hidden sm:flex">
+                <span>? ETH: <strong class="text-white">12 Gwei</strong></span>
+                <span>?? SOL: <strong class="text-white">0.000005</strong></span>
             </div>
+            <!-- 设为主页与自定义按钮 -->
+            <button onclick="setAsHomepage(this)" class="bg-gray-800 hover:bg-gray-700 text-gray-200 px-2.5 py-1 rounded border border-gray-700 transition flex items-center gap-1">
+                <i class="fa-solid fa-house text-emerald-400"></i> 设为主页
+            </button>
+            <button onclick="openCustomModal()" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 px-2.5 py-1 rounded border border-emerald-500/30 transition flex items-center gap-1 font-medium">
+                <i class="fa-solid fa-plus"></i> 自定义添加
+            </button>
             <a href="https://t.me/Hsah0909" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-3 py-1 rounded-full font-medium transition flex items-center gap-1 text-xs">
-                <i class="fa-brands fa-telegram"></i>
- 加入交流群
+                <i class="fa-brands fa-telegram"></i> 加入交流群
             </a>
         </div>
     </header>
@@ -109,14 +91,12 @@
     <div class="max-w-7xl w-full mx-auto px-4 mt-3">
         <div class="banner-bg rounded-lg px-4 py-2 flex items-center justify-between text-xs">
             <div class="flex items-center space-x-2 overflow-hidden">
-                <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold shrink-0">哈希情报</span>
+                <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold shrink-0">全能情报</span>
                 <p class="truncate text-gray-300">
-                    📢 欢迎来到 Hash Club｜哈希俱乐部！快捷键按下 
-<kbd class="bg-gray-800 text-gray-300 px-1 rounded border border-gray-700">/</kbd>
- 键快速激活搜索框。入群获取实时扫盘 Bots & 独家 Pine Script 操盘脚本！
+                    ?? 欢迎来到 Hash Club！点击右上角 <strong class="text-emerald-400">[自定义添加]</strong> 可以把您自己的私房网址永久保存在浏览器中，打造您的专属 Web3 工作台！
                 </p>
             </div>
-            <a href="https://t.me/Hsah0909" target="_blank" class="text-emerald-400 hover:underline shrink-0 ml-2">了解更多 &rarr;</a>
+            <a href="https://t.me/Hsah0909" target="_blank" class="text-emerald-400 hover:underline shrink-0 ml-2">社群直达 &rarr;</a>
         </div>
     </div>
 
@@ -125,17 +105,17 @@
         <!-- 标题与搜索框 -->
         <div class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2">
-                Hash Club｜哈希俱乐部 & 全能导航
+                Hash Club｜哈希俱乐部 & Web3 全能导航
             </h1>
             <p class="text-gray-400 text-sm mb-6">
-                一站式直达全网 Meme 扫盘、DeFi、链上数据分析与开发者工具
+                一站式直达全网 Web3 钱包、Meme 扫盘、交易所、链上分析、资讯投研与开发者工具
             </p>
             <div class="max-w-2xl mx-auto relative">
                 <div class="flex items-center bg-[#131822] border border-[#222b3e] focus-within:border-emerald-500 rounded-lg px-3 py-2 transition shadow-lg">
                     <i class="fa-solid fa-magnifying-glass text-gray-500 ml-2"></i>
-                    <input id="search-input" type="text" placeholder="输入代币名称 / 智能合约地址 (CA)... (按 / 激活)" class="bg-transparent border-none text-sm text-white focus:outline-none w-full px-3 placeholder-gray-500">
+                    <input id="search-input" type="text" placeholder="输入代币名称 / 智能合约地址 (CA) / 工具名称... (支持按 / 键激活)" class="bg-transparent border-none text-sm text-white focus:outline-none w-full px-3 placeholder-gray-500" oninput="handleSearch(this.value)">
                     <button class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-xs px-4 py-2 rounded transition shrink-0">
-                        查 CA
+                        全网搜
                     </button>
                 </div>
             </div>
@@ -144,369 +124,285 @@
         <!-- 分类 Tab -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 text-sm no-scrollbar">
             <button class="tab-btn active px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('all', this)">
-                🔥 全部工具
+                ?? 全部工具
+            </button>
+            <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('custom', this)">
+                ? 我的收藏/自定义
+            </button>
+            <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('wallet', this)">
+                ?? 钱包专区
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('meme', this)">
-                ⚡ 链上冲狗 & Meme
+                ? 链上冲狗 & Meme
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('exchange', this)">
-                🏦 交易所
+                ?? 交易所
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('chart', this)">
-                📊 行情看盘
+                ?? 行情看盘
+            </button>
+            <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('info', this)">
+                ?? 资讯与投研
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('defi', this)">
-                💎 DeFi & 资产
+                ?? DeFi & 跨链
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('security', this)">
-                🛡️ 安全与检测
+                ??? 安全与检测
             </button>
             <button class="tab-btn px-4 py-1.5 rounded-lg shrink-0 flex items-center gap-1.5" onclick="filterCategory('dev', this)">
-                &gt;
- _ 社群 & 开发
+                &gt; _ 基础设施 & 开发
             </button>
         </div>
 
-        <!-- 卡片网格 -->
+        <!-- 卡片网格容器 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="tool-cards">
-            
-            <!-- 1. Binance 币安 -->
-            <a href="https://www.binance.com" target="_blank" data-category="exchange" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-coins"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Binance | 币安</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全球最大加密货币交易所<br><span class="text-gray-500 text-[11px]">World's Leading Crypto Exchange</span></p>
-                </div>
-            </a>
-
-            <!-- 2. OKX 欧易 -->
-            <a href="https://www.topzhjdgxcb.net/join/86659972" target="_blank" data-category="exchange" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-gray-100/10 text-white flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-cube"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">OKX | 欧易</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">领先的交易平台与 Web3 钱包<br><span class="text-gray-500 text-[11px]">Leading Crypto Exchange & Web3 Wallet</span></p>
-                </div>
-            </a>
-
-            <!-- 3. Deepcoin 深币 -->
-            <a href="https://s.xdcjoin.com/9260588" target="_blank" data-category="exchange" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-right-left"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Deepcoin | 深币</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">创新型衍生品交易平台<br><span class="text-gray-500 text-[11px]">Innovative Crypto Derivatives Exchange</span></p>
-                </div>
-            </a>
-
-            <!-- DexScreener -->
-            <a href="https://dexscreener.com" target="_blank" data-category="meme chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">DexScreener</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全链 DEX 实时 K 线与热搜追踪</p>
-                </div>
-            </a>
-
-            <!-- GMGN -->
-            <a href="https://gmgn.ai" target="_blank" data-category="meme" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">GMGN</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">Meme 土狗极速扫盘与聪明钱追踪</p>
-                </div>
-            </a>
-
-            <!-- Pump.fun -->
-            <a href="https://pump.fun" target="_blank" data-category="meme" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-rocket"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Pump.fun</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">Solana 生态 Meme 币内盘发售平台</p>
-                </div>
-            </a>
-
-            <!-- Ave.ai -->
-            <a href="https://ave.ai" target="_blank" data-category="meme chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-fire"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Ave.ai</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">老牌链上数据与行情终端</p>
-                </div>
-            </a>
-
-            <!-- TradingView -->
-            <a href="https://www.tradingview.com" target="_blank" data-category="chart dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-chart-area"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">TradingView</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">专业行情分析与 Pine 脚本开发</p>
-                </div>
-            </a>
-
-            <!-- Coinglass -->
-            <a href="https://www.coinglass.com" target="_blank" data-category="chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-skull"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Coinglass</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全网合约爆仓、持仓量与资金费率</p>
-                </div>
-            </a>
-
-            <!-- CoinMarketCap -->
-            <a href="https://coinmarketcap.com" target="_blank" data-category="chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-coins"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">CoinMarketCap</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全球加密货币市值与代币行情权威站</p>
-                </div>
-            </a>
-
-            <!-- CoinGecko -->
-            <a href="https://www.coingecko.com" target="_blank" data-category="chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">CoinGecko</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全球独立加密货币数据聚合与市值追踪</p>
-                </div>
-            </a>
-
-            <!-- Etherscan -->
-            <a href="https://etherscan.io" target="_blank" data-category="defi security" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-cube"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Etherscan</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">以太坊区块链浏览器与交易查询</p>
-                </div>
-            </a>
-
-            <!-- Solscan -->
-            <a href="https://solscan.io" target="_blank" data-category="meme security" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Solscan</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">Solana 生态专业链上浏览器与分析</p>
-                </div>
-            </a>
-
-            <!-- Bubblemaps -->
-            <a href="https://app.bubblemaps.io" target="_blank" data-category="meme defi" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-circle-nodes"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Bubblemaps</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">代币持仓关系与资金流向泡泡图可视化</p>
-                </div>
-            </a>
-
-            <!-- DefiLlama -->
-            <a href="https://defillama.com" target="_blank" data-category="defi chart" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">DefiLlama</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">全网 TVL 锁仓量与 DeFi 协议数据聚合</p>
-                </div>
-            </a>
-
-            <!-- DeBank -->
-            <a href="https://debank.com" target="_blank" data-category="defi" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-wallet"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">DeBank</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">个人链上多资产看板与巨鲸追踪</p>
-                </div>
-            </a>
-
-            <!-- Dune Analytics -->
-            <a href="https://dune.com" target="_blank" data-category="defi dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-orange-600/10 text-orange-500 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-database"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Dune Analytics</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">社区驱动的链上 SQL 数据可视化看板</p>
-                </div>
-            </a>
-
-            <!-- Jumper -->
-            <a href="https://jumper.exchange" target="_blank" data-category="defi" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-route"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Jumper (Li.Fi)</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">多链跨链桥聚合器与最佳路由比价</p>
-                </div>
-            </a>
-
-            <!-- Revoke.cash -->
-            <a href="https://revoke.cash" target="_blank" data-category="security" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Revoke.cash</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">检查并取消链上合约危险授权</p>
-                </div>
-            </a>
-
-            <!-- GoPlus Security -->
-            <a href="https://gopluslabs.io" target="_blank" data-category="security" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-emerald-600/10 text-emerald-500 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">GoPlus Security</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">代币与合约安全免费检测平台</p>
-                </div>
-            </a>
-
-            <!-- Token Sniffer -->
-            <a href="https://tokensniffer.com" target="_blank" data-category="security" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-bug"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Token Sniffer</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">自动检测貔貅盘与风险恶意合约</p>
-                </div>
-            </a>
-
-            <!-- Vercel -->
-            <a href="https://vercel.com" target="_blank" data-category="dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-gray-500/10 text-gray-300 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Vercel</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">零成本前端自动化部署平台</p>
-                </div>
-            </a>
-
-            <!-- NameSilo -->
-            <a href="https://www.namesilo.com" target="_blank" data-category="dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-blue-600/10 text-blue-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-server"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">NameSilo</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">独立 Web3 域名注册与 DNS 解析</p>
-                </div>
-            </a>
-
-            <!-- GitHub -->
-            <a href="https://github.com" target="_blank" data-category="dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-purple-600/10 text-purple-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-brands fa-github"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">GitHub</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">开源代码托管与 Bot 项目开发</p>
-                </div>
-            </a>
-
-            <!-- Telegram Bot API -->
-            <a href="https://core.telegram.org/bots" target="_blank" data-category="dev" class="card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative">
-                <div class="w-10 h-10 rounded-lg bg-sky-600/10 text-sky-400 flex items-center justify-center shrink-0 text-lg">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
-                <div class="flex-grow min-w-0">
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">Telegram Bot API</h3>
-                    <p class="text-xs text-gray-400 mt-1 line-clamp-2">电报社群自动化机器人开发文档</p>
-                </div>
-            </a>
-
+            <!-- 动态渲染注入 -->
         </div>
     </main>
+
+    <!-- 自定义添加网址弹窗 Modal -->
+    <div id="custom-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="card-bg w-full max-w-md p-6 rounded-xl border border-gray-700 shadow-2xl relative">
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-bookmark text-emerald-400"></i> 添加您的私人网址/工具
+            </h3>
+            <div class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-gray-400 mb-1">网站名称</label>
+                    <input id="custom-name" type="text" placeholder="例如：我的私人面板" class="w-full bg-[#0b0e14] border border-gray-700 rounded px-3 py-2 text-white focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-gray-400 mb-1">网站链接 (URL)</label>
+                    <input id="custom-url" type="text" placeholder="https://example.com" class="w-full bg-[#0b0e14] border border-gray-700 rounded px-3 py-2 text-white focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-gray-400 mb-1">简短描述</label>
+                    <input id="custom-desc" type="text" placeholder="常用高频监控网址" class="w-full bg-[#0b0e14] border border-gray-700 rounded px-3 py-2 text-white focus:border-emerald-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="flex justify-end space-x-3 mt-6">
+                <button onclick="closeCustomModal()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded text-xs transition">取消</button>
+                <button onclick="saveCustomTool()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded text-xs transition">确认保存</button>
+            </div>
+        </div>
+    </div>
 
     <!-- 页脚 -->
     <footer class="text-center py-6 text-xs text-gray-500 border-t border-gray-900 mt-auto">
         <p class="mb-1">
-            开发者: 
-<a href="https://t.me/U09099" target="_blank" class="text-emerald-400 font-medium hover:underline">吉途影</a>
- | 
-            Telegram: 
-<a href="https://t.me/U09099" target="_blank" class="text-emerald-400 font-medium hover:underline">@U09099</a>
- | 
-            官方交流群: 
-<a href="https://t.me/Hsah0909" target="_blank" class="text-emerald-400 font-medium hover:underline">@Hsah0909</a>
+            开发者: <a href="https://t.me/U09099" target="_blank" class="text-emerald-400 font-medium hover:underline">吉途影</a> | 
+            Telegram: <a href="https://t.me/U09099" target="_blank" class="text-emerald-400 font-medium hover:underline">@U09099</a> | 
+            官方交流群: <a href="https://t.me/Hsah0909" target="_blank" class="text-emerald-400 font-medium hover:underline">@Hsah0909</a>
         </p>
         <p>&copy; 2026 Hash Club｜哈希俱乐部. Designed for Traders & Developers.</p>
     </footer>
 
-    <!-- 分类筛选与快捷键 JS 脚本 -->
+    <!-- 逻辑与动态渲染脚本 -->
     <script>
-        function filterCategory(category, element) 
-{
-            // 切换 Tab 高亮
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'
-));
-            element.classList.add(
-'active'
-);
+        // 实时时钟核心函数
+        function updateClock() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            
+            const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const weekday = weekdays[now.getDay()];
 
-            // 筛选卡片显示/隐藏
-            const cards = document.querySelectorAll('.card-item'
-);
-            cards.forEach(
-card =>
- {
-                const categories = card.getAttribute('data-category'
-);
-                if (category === 'all'
- || (categories && categories.includes(category))) {
-                    card.style.display = 
-'flex'
-;
-                } 
-else
- {
-                    card.style.display = 
-'none'
-;
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const timeString = `<i class="fa-regular fa-clock mr-1"></i>${year}年${month}月${day}日 ${weekday} ${hours}:${minutes}:${seconds} <span class="text-emerald-500 font-mono">UTC</span>`;
+            
+            const clockElement = document.getElementById('live-clock');
+            if (clockElement) {
+                clockElement.innerHTML = timeString;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        const defaultTools = [
+            { name: "TokenPocket | TP钱包", url: "https://tokenpocket.pro", desc: "支持多链的移动端与插件端顶流 Web3 钱包", category: "wallet meme", icon: "fa-wallet", color: "text-sky-400", bg: "bg-sky-500/10" },
+            { name: "MetaMask | 小狐狸", url: "https://metamask.io", desc: "全球最普及的 EVM 兼容链插件钱包", category: "wallet defi", icon: "fa-mask", color: "text-orange-400", bg: "bg-orange-500/10" },
+            { name: "OKX Web3 钱包", url: "https://www.okx.com/web3", desc: "多链聚合、跨链交易体验极佳的 Web3 钱包", category: "wallet meme defi", icon: "fa-cube", color: "text-white", bg: "bg-gray-100/10" },
+            { name: "Phantom | 幻影", url: "https://phantom.app", desc: "Solana 与多链生态首选非托管钱包", category: "wallet meme", icon: "fa-ghost", color: "text-purple-400", bg: "bg-purple-500/10" },
+            { name: "Rabby Wallet", url: "https://rabby.io", desc: "专为DeFi防钓鱼、交易预模拟打造的安全钱包", category: "wallet security", icon: "fa-shield-cat", color: "text-blue-400", bg: "bg-blue-500/10" },
+            { name: "Bitget Wallet", url: "https://web3.bitget.com", desc: "聚合交易快、抢Meme热点极快的全链钱包", category: "wallet meme", icon: "fa-b", color: "text-sky-400", bg: "bg-sky-500/10" },
+            { name: "Tonkeeper", url: "https://tonkeeper.com", desc: "Telegram / TON 生态不可或缺的顶级钱包", category: "wallet meme", icon: "fa-paper-plane", color: "text-blue-300", bg: "bg-blue-400/10" },
+            { name: "Ledger", url: "https://www.ledger.com", desc: "全球资产安全防护首选硬件冷钱包", category: "wallet security", icon: "fa-hard-drive", color: "text-gray-200", bg: "bg-gray-500/10" },
+            { name: "Binance | 币安", url: "https://www.binance.com", desc: "全球最大加密货币交易所", category: "exchange", icon: "fa-coins", color: "text-yellow-400", bg: "bg-yellow-500/10" },
+            { name: "OKX | 欧易", url: "https://www.topzhjdgxcb.net/join/86659972", desc: "领先的交易平台与 Web3 综合生态", category: "exchange", icon: "fa-cube", color: "text-white", bg: "bg-gray-100/10" },
+            { name: "Deepcoin | 深币", url: "https://s.xdcjoin.com/9260588", desc: "创新型数字资产衍生品交易平台", category: "exchange", icon: "fa-right-left", color: "text-blue-400", bg: "bg-blue-500/10" },
+            { name: "DexScreener", url: "https://dexscreener.com", desc: "全链 DEX 实时 K 线与热搜土狗追踪", category: "meme chart", icon: "fa-chart-line", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+            { name: "GMGN", url: "https://gmgn.ai", desc: "Meme 土狗极速扫盘与聪明钱追踪神器", category: "meme", icon: "fa-bolt", color: "text-purple-400", bg: "bg-purple-500/10" },
+            { name: "Pump.fun", url: "https://pump.fun", desc: "Solana 生态 Meme 币内盘发售与发射平台", category: "meme", icon: "fa-rocket", color: "text-green-400", bg: "bg-green-500/10" },
+            { name: "Ave.ai", url: "https://ave.ai", desc: "老牌链上数据看板与多链行情终端", category: "meme chart", icon: "fa-fire", color: "text-orange-400", bg: "bg-orange-500/10" },
+            { name: "TradingView", url: "https://www.tradingview.com", desc: "专业行情分析与 Pine 脚本开发图表工具", category: "chart dev", icon: "fa-chart-area", color: "text-sky-400", bg: "bg-sky-500/10" },
+            { name: "Coinglass", url: "https://www.coinglass.com", desc: "全网合约爆仓、持仓量与资金费率看板", category: "chart", icon: "fa-skull", color: "text-red-400", bg: "bg-red-500/10" },
+            { name: "恐慌贪婪指数", url: "https://alternative.me/crypto/fear-and-greed-index/", desc: "把握市场情绪周期变化的风向标", category: "chart info", icon: "fa-gauge-high", color: "text-amber-400", bg: "bg-amber-500/10" },
+            { name: "Token Unlocks", url: "https://tokenUnlocks.app", desc: "全网代币大额解锁与线性释放日历", category: "chart info", icon: "fa-unlock-keyhole", color: "text-indigo-400", bg: "bg-indigo-500/10" },
+            { name: "CoinMarketCap", url: "https://coinmarketcap.com", desc: "全球加密货币市值与代币行情权威站", category: "chart", icon: "fa-coins", color: "text-amber-400", bg: "bg-amber-500/10" },
+            { name: "CoinGecko", url: "https://www.coingecko.com", desc: "全球独立加密货币数据聚合与市值追踪", category: "chart", icon: "fa-globe", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+            { name: "RootData", url: "https://rootdata.com", desc: "Web3 投融资数据库与项目背景黄页", category: "info", icon: "fa-network-wired", color: "text-teal-400", bg: "bg-teal-500/10" },
+            { name: "Foresight News", url: "https://www.foresightnews.news", desc: "面向 Web3 开发者与投资者的专业中文快讯", category: "info", icon: "fa-newspaper", color: "text-blue-400", bg: "bg-blue-600/10" },
+            { name: "PANews", url: "https://www.panewslab.com", desc: "先锋加密资讯与深度行业研究媒体", category: "info", icon: "fa-bullhorn", color: "text-pink-400", bg: "bg-pink-500/10" },
+            { name: "BlockBeats | 律动", url: "https://www.blockbeats.news", desc: "聚焦 Web3 前沿创新与一手行情资讯", category: "info", icon: "fa-bolt-lightning", color: "text-purple-400", bg: "bg-purple-600/10" },
+            { name: "DefiLlama", url: "https://defillama.com", desc: "全网 TVL 锁仓量与 DeFi 协议收益率聚合", category: "defi chart", icon: "fa-layer-group", color: "text-teal-400", bg: "bg-teal-500/10" },
+            { name: "DeBank", url: "https://debank.com", desc: "个人链上多资产看板与巨鲸地址追踪", category: "defi", icon: "fa-wallet", color: "text-indigo-400", bg: "bg-indigo-500/10" },
+            { name: "Jumper (Li.Fi)", url: "https://jumper.exchange", desc: "多链跨链桥聚合器与最佳路由比价", category: "defi", icon: "fa-route", color: "text-pink-400", bg: "bg-pink-500/10" },
+            { name: "Magic Eden", url: "https://magiceden.io", desc: "支持多链 NFT、符文 Runes 与 Ordinals 交易", category: "meme defi", icon: "fa-gem", color: "text-rose-400", bg: "bg-rose-500/10" },
+            { name: "Revoke.cash", url: "https://revoke.cash", desc: "检查并一键取消链上合约危险授权", category: "security", icon: "fa-shield-halved", color: "text-rose-400", bg: "bg-rose-500/10" },
+            { name: "GoPlus Security", url: "https://gopluslabs.io", desc: "代币风险、貔貅与合约安全免费检测平台", category: "security", icon: "fa-user-shield", color: "text-emerald-500", bg: "bg-emerald-600/10" },
+            { name: "Token Sniffer", url: "https://tokensniffer.com", desc: "自动扫描合约漏洞与防貔貅检测", category: "security", icon: "fa-bug", color: "text-yellow-400", bg: "bg-yellow-500/10" },
+            { name: "Etherscan", url: "https://etherscan.io", desc: "以太坊区块链浏览器与交易查询", category: "security defi", icon: "fa-cube", color: "text-blue-400", bg: "bg-blue-500/10" },
+            { name: "Chainlist", url: "https://chainlist.org", desc: "一键查找并添加所有 EVM 链 RPC 网络", category: "dev", icon: "fa-link", color: "text-purple-400", bg: "bg-purple-500/10" },
+            { name: "Dune Analytics", url: "https://dune.com", desc: "社区驱动的链上 SQL 数据可视化看板", category: "dev chart", icon: "fa-database", color: "text-orange-500", bg: "bg-orange-600/10" },
+            { name: "Vercel", url: "https://vercel.com", desc: "零成本前端自动化部署平台", category: "dev", icon: "fa-globe", color: "text-gray-300", bg: "bg-gray-500/10" },
+            { name: "NameSilo", url: "https://www.namesilo.com", desc: "独立 Web3 域名注册与 DNS 解析", category: "dev", icon: "fa-server", color: "text-blue-400", bg: "bg-blue-600/10" },
+            { name: "GitHub", url: "https://github.com", desc: "开源代码托管与 Bot 项目开发", category: "dev", icon: "fa-brands fa-github", color: "text-purple-400", bg: "bg-purple-600/10" },
+            { name: "Telegram Bot API", url: "https://core.telegram.org/bots", desc: "电报社群自动化机器人开发文档", category: "dev", icon: "fa-robot", color: "text-sky-400", bg: "bg-sky-600/10" }
+        ];
+
+        let currentCategory = 'all';
+
+        function renderTools(toolsToRender) {
+            const container = document.getElementById('tool-cards');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (toolsToRender.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">没有找到相关工具或您的自定义收藏为空</div>`;
+                return;
+            }
+
+            toolsToRender.forEach((tool, index) => {
+                const card = document.createElement('a');
+                card.href = tool.url;
+                card.target = '_blank';
+                card.setAttribute('data-category', tool.category || 'custom');
+                card.className = "card-item card-bg p-4 rounded-xl flex items-start space-x-3 transition group relative";
+                
+                let deleteBtnHtml = '';
+                if (tool.isCustom) {
+                    deleteBtnHtml = `<button onclick="event.preventDefault(); removeCustomTool(${index})" class="absolute top-2 right-2 text-gray-500 hover:text-red-400 text-xs px-1.5 py-0.5 rounded" title="删除此自定义收藏"><i class="fa-solid fa-xmark"></i></button>`;
                 }
+
+                card.innerHTML = `
+                    <div class="w-10 h-10 rounded-lg ${tool.bg || 'bg-emerald-500/10'} ${tool.color || 'text-emerald-400'} flex items-center justify-center shrink-0 text-lg">
+                        <i class="fa-solid ${tool.icon || 'fa-star'}"></i>
+                    </div>
+                    <div class="flex-grow min-w-0 pr-4">
+                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate text-sm">${tool.name}</h3>
+                        <p class="text-xs text-gray-400 mt-1 line-clamp-2">${tool.desc}</p>
+                    </div>
+                    ${deleteBtnHtml}
+                `;
+                container.appendChild(card);
             });
         }
 
-        // 按 "/" 快捷键激活搜索框
-        document.addEventListener('keydown', function(e) 
-{
-            if (e.key === '/' && document.activeElement.tagName !== 'INPUT'
-) {
+        function getAllTools() {
+            const customTools = JSON.parse(localStorage.getItem('hash_custom_tools') || '[]');
+            return [...customTools, ...defaultTools];
+        }
+
+        function filterCategory(category, element) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (element) element.classList.add('active');
+            currentCategory = category;
+
+            const all = getAllTools();
+            if (category === 'all') {
+                renderTools(all);
+            } else if (category === 'custom') {
+                const customTools = all.filter(t => t.isCustom);
+                renderTools(customTools);
+            } else {
+                const filtered = all.filter(t => t.category && t.category.includes(category));
+                renderTools(filtered);
+            }
+        }
+
+        function handleSearch(keyword) {
+            const query = keyword.toLowerCase().trim();
+            const all = getAllTools();
+            if (!query) {
+                filterCategory(currentCategory, document.querySelector('.tab-btn.active'));
+                return;
+            }
+            const matched = all.filter(t => t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query) || t.url.toLowerCase().includes(query));
+            renderTools(matched);
+        }
+
+        function openCustomModal() {
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+        function closeCustomModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        function saveCustomTool() {
+            const name = document.getElementById('custom-name').value.trim();
+            const url = document.getElementById('custom-url').value.trim();
+            const desc = document.getElementById('custom-desc').value.trim();
+
+            if (!name || !url) {
+                alert('请输入网站名称和有效的链接！');
+                return;
+            }
+
+            const newTool = {
+                name: name,
+                url: url.startsWith('http') ? url : 'https://' + url,
+                desc: desc || '用户自定义收藏网址',
+                category: 'custom',
+                icon: 'fa-star',
+                color: 'text-emerald-400',
+                bg: 'bg-emerald-500/10',
+                isCustom: true
+            };
+
+            const customTools = JSON.parse(localStorage.getItem('hash_custom_tools') || '[]');
+            customTools.push(newTool);
+            localStorage.setItem('hash_custom_tools', JSON.stringify(customTools));
+
+            closeCustomModal();
+            document.getElementById('custom-name').value = '';
+            document.getElementById('custom-url').value = '';
+            document.getElementById('custom-desc').value = '';
+
+            renderTools(getAllTools());
+            alert('保存成功！已加入您的 [我的收藏/自定义] 专区。');
+        }
+
+        function removeCustomTool(globalIndex) {
+            if (!confirm('确定要删除这个自定义网址吗？')) return;
+            let customTools = JSON.parse(localStorage.getItem('hash_custom_tools') || '[]');
+            const all = getAllTools();
+            const target = all[globalIndex];
+            if (target && target.isCustom) {
+                customTools = customTools.filter(t => t.url !== target.url || t.name !== target.name);
+                localStorage.setItem('hash_custom_tools', JSON.stringify(customTools));
+                renderTools(getAllTools());
+            }
+        }
+
+        function setAsHomepage(btn) {
+            alert('提示：当前浏览器安全限制，请手动按 Ctrl+D 将本站加入书签，或者在浏览器设置中将本页设为默认启动主页！');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
                 e.preventDefault();
-                document.getElementById('search-input'
-).focus();
+                document.getElementById('search-input').focus();
             }
         });
+
+        // 页面一加载就立即渲染卡片
+        renderTools(getAllTools());
     </script>
 </body>
 </html>
